@@ -1,0 +1,16 @@
+l1=[1,2,3,4]
+print(l1)
+l1.append(5)
+print(l1)
+l2=[6,8,7,9,10]
+l1.extend(l2)
+print(l1)
+l1.sort()
+print(l1)
+print(l1.index(2))
+l1.reverse()
+print(l1)
+l1.insert(1,100)
+print(l1)
+l1.remove(1)
+print(l1)

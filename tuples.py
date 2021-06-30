@@ -1,0 +1,8 @@
+t1=(1,2,3,4)
+t2=(5,6,7,8)
+print(t1+t2)
+print(t1.index(3))
+print(t2[2:len(t2)])
+print(t2*2)
+t2=(5,6,7,8,8,9,8)
+print(t2.count(8))
