@@ -1,0 +1,31 @@
+name: Liquibase Update Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allow manual triggering of the workflow
+
+jobs:
+  liquibase-cli:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Install Liquibase
+      - name: Install Liquibase
+        run: |
+          LIQUIBASE_VERSION=4.30.0
+          wget https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz
+          tar -xvzf liquibase-${LIQUIBASE_VERSION}.tar.gz
+          ./liquibase --version
+      - name: Install drivers
+        run: |
+          wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.29.tar.gz
+          tar -xvzf mysql-connector-java-8.0.29.tar.gz
+          cp ./mysql-connector-java-8.0.29/mysql-connector-java-8.0.29.jar lib/
+
+     
