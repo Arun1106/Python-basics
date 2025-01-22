@@ -12,6 +12,8 @@ jobs:
 
     steps:
       # Step 1: Check out the repository code
+          steps:
+      # Step 1: Check out the repository code
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -19,9 +21,10 @@ jobs:
       - name: Install Liquibase
         run: |
           LIQUIBASE_VERSION=4.30.0
-          wget https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.tar.gz
-          tar -xvzf liquibase-${LIQUIBASE_VERSION}.tar.gz
-          ./liquibase --version
+          wget https://github.com/liquibase/liquibase/releases/download/v${LIQUIBASE_VERSION}/liquibase-${LIQUIBASE_VERSION}.zip
+          unzip liquibase-${LIQUIBASE_VERSION}.zip
+          echo "${PWD}" >> $GITHUB_PATH
+
       - name: Install drivers
         run: |
           wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.29.tar.gz
